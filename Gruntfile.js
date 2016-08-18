@@ -8,18 +8,24 @@ module.exports = function (grunt) {
 		watch: {
 			sources: {
 				files: [
-					SRC_DIR + '/**/*.js',
-					SRC_DIR + '/**/*.css',
-					SRC_DIR + '/**/*.html',
-					TEST_DIR + '/**/*.js',
-					TEST_DIR + '/**/*.css',
-					TEST_DIR + '/**/*.html'
+					SRC_DIR + '/**/*.*',
+					TEST_DIR + '/**/*.*'
 				],
 				//tasks: ['jshint'],
 				options: {
 					interrupt: true,
 					livereload: 35729
 				}
+			}
+		},
+		jshint: {
+			dev: {
+				options: {
+					jshintrc: TASKS_DIR + '/.jshintrc'
+				},
+				src: [
+					SRC_DIR + '/**/*.js'
+				]
 			}
 		},
 		jasmine: {
@@ -32,8 +38,8 @@ module.exports = function (grunt) {
 						'src/index.js'
 					],
 					keepRunner: false,
-					outfile: 'test/specs.html',
-					specs: ['test/test.js']
+					outfile: TEST_DIR + '/test.html',
+					specs: [TEST_DIR + '/test.js']
 				}
 			}
 		}
@@ -41,7 +47,9 @@ module.exports = function (grunt) {
 	
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-jasmine');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
 
 	grunt.registerTask('live', ['watch']);
 	grunt.registerTask('test', ['jasmine']);
+	grunt.registerTask('code', ['jshint:dev']);
 };
