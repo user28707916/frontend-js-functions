@@ -1,5 +1,5 @@
 module.exports = function (grunt) {
-	var DOC_DIR = 'doc',
+	var TASKS_DIR = 'tasks',
 		SRC_DIR = 'src',
 		TEST_DIR = 'test',
 		BUILD_DIR = 'build';
