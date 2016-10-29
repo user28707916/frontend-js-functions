@@ -2,153 +2,163 @@
 
            
 describe('The function', function () {
+	var array;
+	var originArray;
+	var result;
+
+	beforeEach(function(){
+		array = undefined;
+		result = undefined;
+		originArray = undefined;
+	});
+
 	//Minimal
-	describe('`min`', function () {
-		var arr,
-			minValue;
-            
-        it('is defined', function () {
-            expect(min).toBeDefined();
-        });
+	describe('`min`', function () {           
+		it('is defined', function () {
+			expect(min).toBeDefined();
+		});
                     
 		describe('correctly finds minimal values in arrays of numbers', function () {
 			it('[10, 45, 55, 100, 66, 4, 99]', function () {
-				arr = [10, 45, 55, 100, 66, 4, 99];
-				minValue = min(arr);
-				expect(minValue).toBe(4);
+				array = [10, 45, 55, 100, 66, 4, 99];
+				result = min(array);
+				expect(result).toBe(4);
 			});
 
 			it('[10.5, 45, 55.2, 100, 66, 99]', function () {
-				arr = [10.5, 45, 55.2, 100, 66, 99];
-				minValue = min(arr);
-				expect(minValue).toBe(10.5);
+				array = [10.5, 45, 55.2, 100, 66, 99];
+				result = min(array);
+				expect(result).toBe(10.5);
 			});
 
 			it('[0, 45, 55.2, 100, 66, -1]', function () {
-				arr = [0, 45, 55.2, 100, 66, -1];
-				minValue = min(arr);
-				expect(minValue).toBe(-1);
+				array = [0, 45, 55.2, 100, 66, -1];
+				result = min(array);
+				expect(result).toBe(-1);
 			});
 
 			it('[45, 0, 100, 66, 1]', function () {
-				arr = [45, 0, 100, 66, 1];
-				minValue = min(arr);
-				expect(minValue).toBe(0);
+				array = [45, 0, 100, 66, 1];
+				result = min(array);
+				expect(result).toBe(0);
 			});
 
 			it('[0, 45, 55.2, 100, 66, -1]', function () {
-				arr = [0, 45, 55.2, 100, 66, -1];
-				minValue = min(arr);
-				expect(minValue).toBe(-1);
+				array = [0, 45, 55.2, 100, 66, -1];
+				result = min(array);
+				expect(result).toBe(-1);
 			});
 		});
 
 		describe('correctly finds minimal values in arrays of different types', function () {
-			var arr,
-				minValue;
-
 			it('[10, 45, , , 66, 4, 99]', function () {
-				arr = [10, 45, , , 66, 4, 99];
-				minValue = min(arr);
-				expect(minValue).toBe(4);
+				array = [10, 45, , , 66, 4, 99];
+				result = min(array);
+				expect(result).toBe(4);
 			});
 
 			it('[null, false, "4", undefined, true, 99, 524]', function () {
-				arr = [null, false, "4", undefined, true, 99, 524];
-				minValue = min(arr);
-				expect(minValue).toBe(99);
+				array = [null, false, "4", undefined, true, 99, 524];
+				result = min(array);
+				expect(result).toBe(99);
 			});
 		});
 
+		it('doesn\'t mutate passed array', function () {
+			array = [10, 45, 55, 100, 66, 4, 99];
+			originArray = array.concat();
+			result = min(array);
+			expect(array).toEqual(originArray);
+		});
+
 		it('returns `undefined` in an empty array', function () {
-			arr = [];
-			minValue = min(arr);
-			expect(minValue).toBeUndefined();
+			array = [];
+			result = min(array);
+			expect(result).toBeUndefined();
 		});
 
 		it('returns `undefined` if an array is not defined', function () {
-			minValue = min();
-			expect(minValue).toBeUndefined();
+			result = min();
+			expect(result).toBeUndefined();
 		});
 	});
 
 	//Maximal
 	describe('`max`', function () {
-		var arr,
-			minValue;
-
-        it('is defined', function () {
-            expect(max).toBeDefined();
-        }); 
+		it('is defined', function () {
+			expect(max).toBeDefined();
+		}); 
 
 		describe('correctly finds maximal values in arrays of numbers', function () {
 			it('[10, 45, 55, 100, 66, 4, 99]', function () {
-				arr = [10, 45, 55, 100, 66, 4, 99];
-				minValue = max(arr);
-				expect(minValue).toBe(100);
+				array = [10, 45, 55, 100, 66, 4, 99];
+				result = max(array);
+				expect(result).toBe(100);
 			});
 
 			it('[10.5, 45, 55.2, 100.6, 66, 99]', function () {
-				arr = [10.5, 45, 55.2, 100.6, 66, 99];
-				minValue = max(arr);
-				expect(minValue).toBe(100.6);
+				array = [10.5, 45, 55.2, 100.6, 66, 99];
+				result = max(array);
+				expect(result).toBe(100.6);
 			});
 
 			it('[0, 45, 55.2, 100, 66, -1]', function () {
-				arr = [0, 45, 55.2, 100, 66, -1];
-				minValue = max(arr);
-				expect(minValue).toBe(100);
+				array = [0, 45, 55.2, 100, 66, -1];
+				result = max(array);
+				expect(result).toBe(100);
 			});
 
 			it('[-45, 0, -100, -66, -1]', function () {
-				arr = [-45, 0, -100, -66, -1];
-				minValue = max(arr);
-				expect(minValue).toBe(0);
+				array = [-45, 0, -100, -66, -1];
+				result = max(array);
+				expect(result).toBe(0);
 			});
 
 			it('[0, 45, 55.2, 100, 66, -1]', function () {
-				arr = [0, 45, 55.2, 100, 66, -1];
-				minValue = max(arr);
-				expect(minValue).toBe(100);
+				array = [0, 45, 55.2, 100, 66, -1];
+				result = max(array);
+				expect(result).toBe(100);
 			});
 		});
 
 		describe('correctly finds maximal values in arrays of different types', function () {
-			var arr,
-				minValue;
-
 			it('[10, 45, , , 66, 4, 99]', function () {
-				arr = [10, 45, , , 66, 4, 99];
-				minValue = max(arr);
-				expect(minValue).toBe(99);
+				array = [10, 45, , , 66, 4, 99];
+				result = max(array);
+				expect(result).toBe(99);
 			});
 
 			it('[null, false, "4", undefined, true, 99, 6]', function () {
-				arr = [null, false, "4", undefined, true, 99];
-				minValue = max(arr);
-				expect(minValue).toBe(99);
+				array = [null, false, "4", undefined, true, 99];
+				result = max(array);
+				expect(result).toBe(99);
 			});
 		});
 
+		it('doesn\'t mutate passed array', function () {
+			array = [10, 45, 55, 100, 66, 4, 99];
+			originArray = array.concat();
+			result = max(array);
+			expect(array).toEqual(originArray);
+		});
+
 		it('returns `undefined` in an empty array', function () {
-			arr = [];
-			minValue = max(arr);
-			expect(minValue).toBeUndefined();
+			array = [];
+			result = max(array);
+			expect(result).toBeUndefined();
 		});
 
 		it('returns `undefined` if an array is not defined', function () {
-			minValue = max();
-			expect(minValue).toBeUndefined();
+			result = max();
+			expect(result).toBeUndefined();
 		});
 	});
 
 	//A sum
 	describe('`sum`', function () {
-		var result;
-        
-        it('is defined', function () {
-            expect(sum).toBeDefined();
-        });
+		it('is defined', function () {
+			expect(sum).toBeDefined();
+		});
         
 		describe('correctly sums numbers', function () {
 			it('10, 45, 55, 100, 66, 4, 99', function () {
@@ -178,9 +188,6 @@ describe('The function', function () {
 		});
 
 		describe('correctly sums values ignoring not number types', function () {
-			var arr,
-				minValue;
-
 			it('null, false, "4", undefined, true, 99, 6', function () {
 				result = sum(null, false, "4", undefined, true, 99, 6);
 				expect(result).toBe(105);
