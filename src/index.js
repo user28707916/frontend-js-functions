@@ -13,7 +13,7 @@
 function max (arr) {
 	if (arr) {
 	maxx = -Infinity;
-	arr.forEach(function (elem, index=0, arr) {
+	arr.forEach(function (elem,i, arr) {
 	    if (elem > maxx && typeof(elem) == 'number') 
 		maxx=elem;
 	});
@@ -22,11 +22,9 @@ function max (arr) {
 	}
 }
 
-
-
 function sum(){
 		var result = 0;
-
+        var index = 0;
 		for (i = 0; 
 		    i < arguments.length;
 		    i += 1){
