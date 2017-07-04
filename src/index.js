@@ -3,7 +3,7 @@ function min(arr) {
 	if (arr) {
 		min_digits = Infinity;
 		arr.forEach(function (elem, index = 0, arr) {
-			if (elem < minn && typeof (elem) == 'number')
+			if (elem < min_digits && typeof (elem) == 'number')
 				min_digits = elem;
 		});
 		if (min_digits == Infinity) min_digits = undefined;
@@ -16,7 +16,7 @@ function max(arr) {
 	if (arr) {
 		max_digits = -Infinity;
 		arr.forEach(function (elem, i, arr) {
-			if (elem > maxx && typeof (elem) == 'number')
+			if (elem > max_digits && typeof (elem) == 'number')
 				max_digits = elem;
 		});
 		if (max_digits == -Infinity) max_digits = undefined;
