@@ -26,7 +26,6 @@ function max(arr) {
 
 function sum() {
 	var result = 0;
-	var index = 0;
 	for (i = 0;
 		i < arguments.length;
 		i += 1) {
