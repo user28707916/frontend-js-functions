@@ -2,7 +2,7 @@ function min(arr) {
 	var min_digits;
 	if (arr) {
 		min_digits = Infinity;
-		arr.forEach(function (elem, index = 0, arr) {
+		arr.forEach(function (elem, i, arr) {
 			if (elem < min_digits && typeof (elem) == 'number')
 				min_digits = elem;
 		});
@@ -26,13 +26,13 @@ function max(arr) {
 
 function sum() {
 	var result = 0;
+	var i;
 	for (i = 0;
-		i < arguments.length;
+	    i < arguments.length;
 		i += 1) {
-		if (typeof (arguments[i]) != 'number') {
-			arguments[i] = 0;
+		if (typeof(arguments[i]) == 'number') {
+			result = result + arguments[i];
 		}
-		result = result + arguments[i];
 	}
 	return result;
 }
